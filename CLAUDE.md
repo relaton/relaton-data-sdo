@@ -71,4 +71,7 @@ refreshed `index.yaml` (or let CI do it) — `index_spec` fails on drift.
 Seeded logos were extracted from metanorma PDF stylesheets: base64
 `Image-*-Logo` blocks in `metanorma-{iso,iec,bsi}` XSLTs and NIST's shipped PNGs
 under `metanorma-nist/.../html/`. **OGC, IEEE, IHO** have no asset in that tree
-and are metadata-only — see `HANDOFFS/relaton__relaton-data-sdo-assets.md`.
+and are seeded metadata-only (`logo: []`) until PDF-ready assets are sourced —
+the base64 blocks live inside `<xsl:variable name="Image-…-Logo">` (sometimes
+wrapped in `<xsl:text>`); match the `<xsl:variable>` element precisely, since a
+bare comment mentioning the name can otherwise hijack a naive regex (as with BSI).

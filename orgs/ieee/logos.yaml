@@ -1,4 +1,4 @@
 ---
-# No PDF-ready logo asset has been sourced for IEEE yet — see
-# HANDOFFS/relaton__relaton-data-sdo-assets.md. Metadata-only until then.
+# No PDF-ready logo asset has been sourced for IEEE yet. Metadata-only until then;
+# to add one, drop the binary under logos/ and list the variant(s) here.
 logo: []

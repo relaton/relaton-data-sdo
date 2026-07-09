@@ -103,9 +103,11 @@ on every push that touches the source, so
 |===
 
 Logos were extracted from the metanorma PDF stylesheets (the base64
-`Image-*-Logo` blocks and NIST's shipped PNGs). See
-link:HANDOFFS/relaton__relaton-data-sdo-assets.md[the assets hand-off] for the
-three organizations still needing PDF-ready assets.
+`Image-*-Logo` blocks and NIST's shipped PNGs). OGC, IEEE and IHO have no asset
+in that tree yet, so they are seeded metadata-only (`logo: []`); to add one, drop
+the binary under `orgs/<slug>/logos/` and replace the empty list in
+`orgs/<slug>/logos.yaml` (see the format above), preferring the highest-resolution
+source available.
 
 == How the relaton client consumes it
 

@@ -17,4 +17,4 @@ All notable changes to this project are documented here.
   manifest shape.
 * Seed data for ISO, IEC, NIST and BSI with real logo assets extracted from the
   metanorma PDF stylesheets; OGC, IEEE and IHO seeded as metadata-only pending
-  PDF-ready assets (see `HANDOFFS/`).
+  PDF-ready assets.

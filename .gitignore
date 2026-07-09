@@ -3,3 +3,4 @@ vendor/
 Gemfile.lock
 .rspec_status
 *.gem
+HANDOFFS/
