@@ -1,0 +1,21 @@
+---
+logo:
+  - style: default
+    format: png
+    size: 800x355
+    file: default-800x355.png
+  - style: cswp
+    format: png
+    size: 995x443
+    file: cswp-995x443.png
+    applicability: Cybersecurity White Paper (CSWP) series
+  - style: commerce_color
+    format: png
+    size: 800x800
+    file: commerce_color-800x800.png
+    applicability: U.S. Department of Commerce seal (color)
+  - style: commerce_mono
+    format: png
+    size: 800x800
+    file: commerce_mono-800x800.png
+    applicability: U.S. Department of Commerce seal (monochrome)

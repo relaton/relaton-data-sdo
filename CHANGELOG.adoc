@@ -1,0 +1,20 @@
+= Changelog
+
+All notable changes to this project are documented here.
+
+== Unreleased
+
+=== Added
+
+* Initial `relaton-data-sdo` data repository: the SDO organization & logo store
+  consumed by `Relaton::Sdo` (metanorma#346, relaton-db#132).
+* Per-org source layout `orgs/<slug>/{metadata.yaml,logos.yaml,logos/}`.
+* `build_index.rb`: merges the per-org source into a single `index.yaml`,
+  rewriting each logo `file:` to its absolute published `url:`.
+* `build-index` GitHub Action: rebuilds and commits `index.yaml` on push to
+  `main`, keeping the client's `DEFAULT_URL` current.
+* rspec suite validating the source schema, the build, and the published
+  manifest shape.
+* Seed data for ISO, IEC, NIST and BSI with real logo assets extracted from the
+  metanorma PDF stylesheets; OGC, IEEE and IHO seeded as metadata-only pending
+  PDF-ready assets (see `HANDOFFS/`).

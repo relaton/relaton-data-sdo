@@ -1,0 +1,11 @@
+---
+logo:
+  - style: default
+    format: png
+    size: 247x226
+    file: default-247x226.png
+  - style: alt
+    format: png
+    size: 250x236
+    file: alt-250x236.png
+    applicability: alternate ISO logo lockup (metanorma Image-ISO-Logo2)

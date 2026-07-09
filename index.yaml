@@ -1,0 +1,74 @@
+---
+organizations:
+  BSI:
+    name:
+    - content: British Standards Institution
+    logo:
+    - style: default
+      format: png
+      size: 1182x723
+      url: https://raw.githubusercontent.com/relaton/relaton-data-sdo/main/orgs/bsi/logos/default-1182x723.png
+  IEC:
+    name:
+    - content: International Electrotechnical Commission
+    - language: fr
+      content: Commission électrotechnique internationale
+    logo:
+    - style: default
+      format: png
+      size: 156x156
+      url: https://raw.githubusercontent.com/relaton/relaton-data-sdo/main/orgs/iec/logos/default-156x156.png
+  IEEE:
+    name:
+    - content: Institute of Electrical and Electronics Engineers
+    logo: []
+  IHO:
+    name:
+    - content: International Hydrographic Organization
+    - language: fr
+      content: Organisation hydrographique internationale
+    logo: []
+  ISO:
+    name:
+    - content: International Organization for Standardization
+    - language: fr
+      content: Organisation internationale de normalisation
+    - language: ru
+      content: Международная организация по стандартизации
+    logo:
+    - style: default
+      format: png
+      size: 247x226
+      url: https://raw.githubusercontent.com/relaton/relaton-data-sdo/main/orgs/iso/logos/default-247x226.png
+    - style: alt
+      format: png
+      size: 250x236
+      url: https://raw.githubusercontent.com/relaton/relaton-data-sdo/main/orgs/iso/logos/alt-250x236.png
+      applicability: alternate ISO logo lockup (metanorma Image-ISO-Logo2)
+  NIST:
+    name:
+    - content: National Institute of Standards and Technology
+    logo:
+    - style: default
+      format: png
+      size: 800x355
+      url: https://raw.githubusercontent.com/relaton/relaton-data-sdo/main/orgs/nist/logos/default-800x355.png
+    - style: cswp
+      format: png
+      size: 995x443
+      url: https://raw.githubusercontent.com/relaton/relaton-data-sdo/main/orgs/nist/logos/cswp-995x443.png
+      applicability: Cybersecurity White Paper (CSWP) series
+    - style: commerce_color
+      format: png
+      size: 800x800
+      url: https://raw.githubusercontent.com/relaton/relaton-data-sdo/main/orgs/nist/logos/commerce_color-800x800.png
+      applicability: U.S. Department of Commerce seal (color)
+    - style: commerce_mono
+      format: png
+      size: 800x800
+      url: https://raw.githubusercontent.com/relaton/relaton-data-sdo/main/orgs/nist/logos/commerce_mono-800x800.png
+      applicability: U.S. Department of Commerce seal (monochrome)
+  OGC:
+    name:
+    - content: Open Geospatial Consortium
+    logo: []

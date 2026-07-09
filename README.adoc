@@ -1,0 +1,144 @@
+= relaton-data-sdo: SDO organization & logo store
+
+image:https://github.com/relaton/relaton-data-sdo/actions/workflows/build.yml/badge.svg["build-index", link="https://github.com/relaton/relaton-data-sdo/actions/workflows/build.yml"]
+
+The data companion to the `Relaton::Sdo` client in the
+https://github.com/relaton/relaton[relaton] gem (entry point
+`Relaton.organization`). It stores, per standards-development organization
+(SDO), the organization's names/translations and its logo variants (multiple
+formats, sizes and styles), and publishes them as a single `index.yaml` manifest.
+
+It answers https://github.com/metanorma/metanorma/issues/346[metanorma#346]
+("central logo store") and
+https://github.com/relaton/relaton/issues/132[relaton-db#132]
+("abbreviation -> organization name"), replacing the stalled vCard-based
+proof-of-concept `relaton/data-sdo-metadata` (vCard's single `LOGO` URL cannot
+express format/size/style variants).
+
+== Repository layout
+
+[source]
+----
+orgs/
+  <slug>/                 # lower-case org slug, e.g. iso
+    metadata.yaml         # abbreviation + name/translations (SOURCE)
+    logos.yaml            # logo variants, each with a relative `file:` (SOURCE)
+    logos/                # the versioned binary assets
+      default-247x226.png
+build_index.rb            # merges every orgs/* into index.yaml
+index.yaml                # BUILT artifact — do not hand-edit; run `rake build`
+----
+
+Edit only the `orgs/<slug>/` *source*. `index.yaml` is generated.
+
+== Source file format
+
+`orgs/<slug>/metadata.yaml`:
+
+[source,yaml]
+----
+abbreviation: ISO                 # the lookup key (upper-case)
+name:
+  - content: International Organization for Standardization   # default (no language)
+  - language: fr
+    content: Organisation internationale de normalisation
+----
+
+`orgs/<slug>/logos.yaml`:
+
+[source,yaml]
+----
+logo:
+  - style: default                # PRIMARY discriminator between variants
+    format: png                   # file suffix; drives the mimetype
+    size: 247x226                 # optional, free-form "WxH"
+    file: default-247x226.png     # relative to orgs/<slug>/logos/
+  - style: alt
+    format: png
+    file: alt-250x236.png
+    applicability: alternate lockup   # OPAQUE guidance; consumers select, we never parse it
+----
+
+An org with no sourced asset yet uses `logo: []` (metadata-only).
+
+== The published manifest
+
+`build_index.rb` merges every `orgs/*/metadata.yaml` + `logos.yaml` into
+`index.yaml` under an `organizations:` map keyed by abbreviation, rewriting each
+logo `file:` to its absolute published `url:`:
+
+[source,yaml]
+----
+organizations:
+  ISO:
+    name:
+      - content: International Organization for Standardization
+      - language: fr
+        content: Organisation internationale de normalisation
+    logo:
+      - style: default
+        format: png
+        size: 247x226
+        url: https://raw.githubusercontent.com/relaton/relaton-data-sdo/main/orgs/iso/logos/default-247x226.png
+----
+
+The manifest carries metadata and URLs only — binaries are fetched on demand,
+never inlined. The `build-index` GitHub Action rebuilds and commits `index.yaml`
+on every push that touches the source, so
+`https://raw.githubusercontent.com/relaton/relaton-data-sdo/main/index.yaml`
+(the client's `Relaton::Sdo::Config::DEFAULT_URL`) is always current.
+
+== Seeded organizations
+
+[cols="1,3,2",options="header"]
+|===
+| Abbrev | Name | Logo styles
+| ISO  | International Organization for Standardization | default, alt
+| IEC  | International Electrotechnical Commission | default
+| NIST | National Institute of Standards and Technology | default, cswp, commerce_color, commerce_mono
+| BSI  | British Standards Institution | default
+| OGC  | Open Geospatial Consortium | _(metadata only — asset pending)_
+| IEEE | Institute of Electrical and Electronics Engineers | _(metadata only — asset pending)_
+| IHO  | International Hydrographic Organization | _(metadata only — asset pending)_
+|===
+
+Logos were extracted from the metanorma PDF stylesheets (the base64
+`Image-*-Logo` blocks and NIST's shipped PNGs). See
+link:HANDOFFS/relaton__relaton-data-sdo-assets.md[the assets hand-off] for the
+three organizations still needing PDF-ready assets.
+
+== How the relaton client consumes it
+
+[source,ruby]
+----
+org = Relaton.organization("ISO")                  # case-insensitive; nil if unknown
+org.name                                            # default name
+org.name("fr")                                      # translation, or nil
+org.logo_query(format: "png", style: "default")     # => [Relaton::Sdo::Logo, …]
+logo = org.logo(format: "png", style: "default")
+logo.content                                        # raw bytes (lazy GET of logo.url)
+logo.data_uri                                       # "data:image/png;base64,…"
+logo.save("iso.png")
+----
+
+== Adding or updating an organization
+
+. Create/edit `orgs/<slug>/metadata.yaml` and `orgs/<slug>/logos.yaml`.
+. Drop the binary assets under `orgs/<slug>/logos/`.
+. Run `bundle exec rake` — this validates the source and (via the `build` task)
+  can regenerate `index.yaml`. Commit the source; the GitHub Action rebuilds the
+  published `index.yaml`.
+
+== Development
+
+[source,sh]
+----
+bundle install
+bundle exec rake        # run the spec suite (default task)
+bundle exec rake build  # regenerate index.yaml locally
+----
+
+== License
+
+BSD 2-Clause (see link:LICENSE[]). Logo assets are the trademarks of their
+respective organizations and remain subject to those owners' policies.

@@ -1,0 +1,52 @@
+name: build-index
+
+# Rebuild the published index.yaml whenever the per-org source changes, and
+# commit it back to main so the raw URL the relaton client reads stays current.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "orgs/**"
+      - "build_index.rb"
+      - ".github/workflows/build.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-index
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.4"
+          bundler-cache: true
+
+      # Regenerate first so a source-only push (metadata/logos change without a
+      # locally-rebuilt index.yaml) is healed here rather than failing the
+      # in-sync check in index_spec.
+      - name: Build index.yaml
+        run: ruby build_index.rb
+
+      - name: Validate source, build and manifest
+        run: bundle exec rspec
+
+      - name: Commit index.yaml if it changed
+        run: |
+          if git diff --quiet -- index.yaml; then
+            echo "index.yaml unchanged; nothing to commit."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.yaml
+          # [skip ci] stops this commit from retriggering the workflow.
+          git commit -m "Rebuild index.yaml [skip ci]"
+          git push
