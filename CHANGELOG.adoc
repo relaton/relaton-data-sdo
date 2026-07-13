@@ -18,3 +18,8 @@ All notable changes to this project are documented here.
 * Seed data for ISO, IEC, NIST and BSI with real logo assets extracted from the
   metanorma PDF stylesheets; OGC, IEEE and IHO seeded as metadata-only pending
   PDF-ready assets.
+* Metadata-only entries (names + verified translations, `logo: []`) for common
+  metanorma publishers called out by relaton/relaton#40: ITU (fr/es/ru), ITU-R,
+  ITU-T, MLIT (ja), IETF, W3C, CEN (fr/de), CENELEC (fr/de), ETSI (fr), JIS (ja),
+  OASIS, ECMA, CalConnect, CCSDS, CIE (fr/de), BIPM (fr), CGPM (fr) and 3GPP, so
+  every abbreviation metanorma may resolve is covered.

@@ -100,14 +100,32 @@ on every push that touches the source, so
 | OGC  | Open Geospatial Consortium | _(metadata only — asset pending)_
 | IEEE | Institute of Electrical and Electronics Engineers | _(metadata only — asset pending)_
 | IHO  | International Hydrographic Organization | _(metadata only — asset pending)_
+| ITU  | International Telecommunication Union | _(metadata only — asset pending)_
+| ITU-R | ITU Radiocommunication Sector | _(metadata only — asset pending)_
+| ITU-T | ITU Telecommunication Standardization Sector | _(metadata only — asset pending)_
+| MLIT | Ministry of Land, Infrastructure, Transport and Tourism | _(metadata only — asset pending)_
+| IETF | Internet Engineering Task Force | _(metadata only — asset pending)_
+| W3C  | World Wide Web Consortium | _(metadata only — asset pending)_
+| CEN  | European Committee for Standardization | _(metadata only — asset pending)_
+| CENELEC | European Committee for Electrotechnical Standardization | _(metadata only — asset pending)_
+| ETSI | European Telecommunications Standards Institute | _(metadata only — asset pending)_
+| JIS  | Japanese Industrial Standards | _(metadata only — asset pending)_
+| OASIS | Organization for the Advancement of Structured Information Standards | _(metadata only — asset pending)_
+| ECMA | Ecma International | _(metadata only — asset pending)_
+| CALCONNECT | The Calendaring and Scheduling Consortium | _(metadata only — asset pending)_
+| CCSDS | Consultative Committee for Space Data Systems | _(metadata only — asset pending)_
+| CIE  | International Commission on Illumination | _(metadata only — asset pending)_
+| BIPM | International Bureau of Weights and Measures | _(metadata only — asset pending)_
+| CGPM | General Conference on Weights and Measures | _(metadata only — asset pending)_
+| 3GPP | 3rd Generation Partnership Project | _(metadata only — asset pending)_
 |===
 
 Logos were extracted from the metanorma PDF stylesheets (the base64
-`Image-*-Logo` blocks and NIST's shipped PNGs). OGC, IEEE and IHO have no asset
-in that tree yet, so they are seeded metadata-only (`logo: []`); to add one, drop
-the binary under `orgs/<slug>/logos/` and replace the empty list in
-`orgs/<slug>/logos.yaml` (see the format above), preferring the highest-resolution
-source available.
+`Image-*-Logo` blocks and NIST's shipped PNGs). The metadata-only orgs above have
+no asset in that tree yet, so they are seeded with `logo: []` (names and
+translations only); to add one, drop the binary under `orgs/<slug>/logos/` and
+replace the empty list in `orgs/<slug>/logos.yaml` (see the format above),
+preferring the highest-resolution source available.
 
 == How the relaton client consumes it
 

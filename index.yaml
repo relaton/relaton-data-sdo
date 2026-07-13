@@ -1,5 +1,15 @@
 ---
 organizations:
+  3GPP:
+    name:
+    - content: 3rd Generation Partnership Project
+    logo: []
+  BIPM:
+    name:
+    - content: International Bureau of Weights and Measures
+    - language: fr
+      content: Bureau international des poids et mesures
+    logo: []
   BSI:
     name:
     - content: British Standards Institution
@@ -8,6 +18,54 @@ organizations:
       format: png
       size: 1182x723
       url: https://raw.githubusercontent.com/relaton/relaton-data-sdo/main/orgs/bsi/logos/default-1182x723.png
+  CALCONNECT:
+    name:
+    - content: The Calendaring and Scheduling Consortium
+    logo: []
+  CCSDS:
+    name:
+    - content: Consultative Committee for Space Data Systems
+    logo: []
+  CEN:
+    name:
+    - content: European Committee for Standardization
+    - language: fr
+      content: Comité européen de normalisation
+    - language: de
+      content: Europäisches Komitee für Normung
+    logo: []
+  CENELEC:
+    name:
+    - content: European Committee for Electrotechnical Standardization
+    - language: fr
+      content: Comité européen de normalisation électrotechnique
+    - language: de
+      content: Europäisches Komitee für elektrotechnische Normung
+    logo: []
+  CGPM:
+    name:
+    - content: General Conference on Weights and Measures
+    - language: fr
+      content: Conférence générale des poids et mesures
+    logo: []
+  CIE:
+    name:
+    - content: International Commission on Illumination
+    - language: fr
+      content: Commission internationale de l'éclairage
+    - language: de
+      content: Internationale Beleuchtungskommission
+    logo: []
+  ECMA:
+    name:
+    - content: Ecma International
+    logo: []
+  ETSI:
+    name:
+    - content: European Telecommunications Standards Institute
+    - language: fr
+      content: Institut européen des normes de télécommunications
+    logo: []
   IEC:
     name:
     - content: International Electrotechnical Commission
@@ -21,6 +79,10 @@ organizations:
   IEEE:
     name:
     - content: Institute of Electrical and Electronics Engineers
+    logo: []
+  IETF:
+    name:
+    - content: Internet Engineering Task Force
     logo: []
   IHO:
     name:
@@ -45,6 +107,36 @@ organizations:
       size: 250x236
       url: https://raw.githubusercontent.com/relaton/relaton-data-sdo/main/orgs/iso/logos/alt-250x236.png
       applicability: alternate ISO logo lockup (metanorma Image-ISO-Logo2)
+  ITU:
+    name:
+    - content: International Telecommunication Union
+    - language: fr
+      content: Union internationale des télécommunications
+    - language: es
+      content: Unión Internacional de Telecomunicaciones
+    - language: ru
+      content: Международный союз электросвязи
+    logo: []
+  ITU-R:
+    name:
+    - content: ITU Radiocommunication Sector
+    logo: []
+  ITU-T:
+    name:
+    - content: ITU Telecommunication Standardization Sector
+    logo: []
+  JIS:
+    name:
+    - content: Japanese Industrial Standards
+    - language: ja
+      content: 日本産業規格
+    logo: []
+  MLIT:
+    name:
+    - content: Ministry of Land, Infrastructure, Transport and Tourism
+    - language: ja
+      content: 国土交通省
+    logo: []
   NIST:
     name:
     - content: National Institute of Standards and Technology
@@ -68,7 +160,15 @@ organizations:
       size: 800x800
       url: https://raw.githubusercontent.com/relaton/relaton-data-sdo/main/orgs/nist/logos/commerce_mono-800x800.png
       applicability: U.S. Department of Commerce seal (monochrome)
+  OASIS:
+    name:
+    - content: Organization for the Advancement of Structured Information Standards
+    logo: []
   OGC:
     name:
     - content: Open Geospatial Consortium
+    logo: []
+  W3C:
+    name:
+    - content: World Wide Web Consortium
     logo: []
